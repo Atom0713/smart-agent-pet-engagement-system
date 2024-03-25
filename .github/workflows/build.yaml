@@ -1,0 +1,14 @@
+name: Build and push to docker hub.
+run-name: Test.
+on:
+    push:
+        branches:
+            - main
+jobs:
+    build_cleint:
+        runs-on: ubuntu-latest
+        name: Build motion senso client.
+
+    build_data_aggregation_mecahnism:
+        runs-on: ubuntu-latest
+        name: Build data aggregation app.

@@ -1,0 +1,17 @@
+name: Test.
+run-name: Test.
+on:
+    pull_request:
+        branches:
+            - 'sensor_client/**''
+            - 'data_aggregation/**'
+            - 'actuator/**'
+jobs:
+    flake8:
+        runs-on: ubuntu-latest
+        name: Lint the code.
+
+    mypy:
+        runs-on: ubuntu-latest
+        name: Type check the code.
+
