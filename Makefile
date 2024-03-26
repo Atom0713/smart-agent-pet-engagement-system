@@ -1,5 +1,6 @@
 build:
-	@echo run
+	poetry lock
+
 run_sensor_client:
 	poetry --directory src/sensor_client run python src/sensor_client/src/sensor_client.py
 
