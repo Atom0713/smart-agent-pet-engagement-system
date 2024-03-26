@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "sensor-client"
+version = "0.1.0"
+description = "Sensor client. Motion sensor that sends data to the data aggregation server upon activation."
+authors = ["Artem Sliusarenko <artemsliusarenko@Artems-MacBook-Pro.local>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.9.0"
+flake8 = "^7.0.0"
+black = "^24.3.0"
+isort = "^5.13.2"
+flake8-black = "^0.3.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
