@@ -2,8 +2,9 @@ build:
 	poetry lock
 
 run_sensor_client:
-	poetry --directory src/sensor_client run python src/sensor_client/src/sensor_client.py
-
+	poetry run python src/sensor_client/src/sensor_client.py
+run_data_aggregation:
+	poetry run uvicorn src.data_aggregation.src.app:app --reload
 run:
 	@echo run
 

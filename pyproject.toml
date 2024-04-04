@@ -17,6 +17,11 @@ mypy = "^1.9.0"
 flake8-black = "^0.3.6"
 isort = "^5.13.2"
 
+
+[tool.poetry.group.data_aggregation.dependencies]
+fastapi = "^0.110.1"
+uvicorn = {extras = ["standard"], version = "^0.29.0"}
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
