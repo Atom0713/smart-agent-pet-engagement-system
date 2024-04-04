@@ -17,7 +17,13 @@ mypy = "^1.9.0"
 flake8-black = "^0.3.6"
 isort = "^5.13.2"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.12"
+
+[[tool.mypy.overrides]]
+module = "loop"
+ignore_missing_imports = true
