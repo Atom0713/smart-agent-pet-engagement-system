@@ -25,13 +25,13 @@ To start local dynamoDB run command below. It will expose dynamoDB service on th
 
 To test connection:
 
-```aws dynamodb list-tables --endpoint-url http://localhost:8000:```
+```aws dynamodb list-tables --endpoint-url http://localhost:8000```
 
 
 #### Sensor client
 Run senro client:
 
-```make run_senso_client```
+```make run_sensor_client```
 
 #### Data aggregation service
 Run data aggregation tool:
