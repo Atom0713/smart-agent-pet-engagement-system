@@ -1,14 +1,19 @@
 name: Build and push to docker hub.
-run-name: Test.
+run-name: Build and push to docker hub.
 on:
     push:
-        branches:
-            - main
+      branches:
+        - main
 jobs:
     build_cleint:
-        runs-on: ubuntu-latest
-        name: Build motion senso client.
-
-    build_data_aggregation_mecahnism:
-        runs-on: ubuntu-latest
-        name: Build data aggregation app.
+      runs-on: ubuntu-latest
+      name: Build motion senso client.
+      strategy:
+        matrix:
+          python-version: ["3.12"]
+      steps:
+        - uses: actions/checkout@v4
+        - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v4
+          with:
+              python-version: ${{ matrix.python-version }}
