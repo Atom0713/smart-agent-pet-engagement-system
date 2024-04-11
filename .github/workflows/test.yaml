@@ -2,16 +2,22 @@ name: Test.
 run-name: Test.
 on:
     pull_request:
-        branches:
-            - 'sensor_client/**''
-            - 'data_aggregation/**'
-            - 'actuator/**'
+      branches:
+        - 'sensor_client/**'
+        - 'data_aggregation/**'
+        - 'actuator/**'
 jobs:
-    flake8:
+    test:
         runs-on: ubuntu-latest
-        name: Lint the code.
-
-    mypy:
-        runs-on: ubuntu-latest
-        name: Type check the code.
-
+        name: Test.
+        strategy:
+            matrix:
+              python-version: ["3.12"]
+        steps:
+          - uses: actions/checkout@v4
+          - name: Set up Python ${{ matrix.python-version }}
+            uses: actions/setup-python@v4
+            with:
+                python-version: ${{ matrix.python-version }}
+          - name: Run code typing&linting
+            run: make test
