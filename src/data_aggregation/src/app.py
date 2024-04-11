@@ -1,8 +1,9 @@
-from typing import Union
-
 from fastapi import FastAPI
+from .database.table import initialize_db
 
 app = FastAPI()
+
+db  = initialize_db()
 
 
 @app.get("/")

@@ -5,8 +5,6 @@ run_sensor_client:
 	poetry run python src/sensor_client/src/sensor_client.py
 run_data_aggregation:
 	poetry run uvicorn src.data_aggregation.src.app:app --reload
-run:
-	@echo run
 
 black:
 	poetry run black src
