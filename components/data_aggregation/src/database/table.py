@@ -1,24 +1,19 @@
 import botocore
+
 from .dynamodb_client import ddb_client
 
 
-def initialize_db() -> None:
+def initialize_db():
     try:
         table = ddb_client.create_table(
             AttributeDefinitions=[
-                {
-                    'AttributeName': 'pk',
-                    'AttributeType': 'S'
-                },
+                {"AttributeName": "pk", "AttributeType": "S"},
             ],
-            TableName='sensor_activations',
+            TableName="sensor_activations",
             KeySchema=[
-                {
-                    'AttributeName': 'pk',
-                    'KeyType': 'HASH'
-                },
+                {"AttributeName": "pk", "KeyType": "HASH"},
             ],
-             BillingMode='PAY_PER_REQUEST',
+            BillingMode="PAY_PER_REQUEST",
         )
         table.wait_until_exists()
         print("Table status:", table.table_status)
