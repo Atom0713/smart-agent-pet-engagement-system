@@ -1,6 +1,8 @@
 # smart-agent-pet-engagement-system
 System designated to keep pets, locked in apartments, active while their human friends are away.
 
+#3 Design document
+https://www.notion.so/ID2012-Ubiquitous-Computing-d95a3c4c89f3437c805b103041c374de
 
 ## Prerequisites
 - Docker
