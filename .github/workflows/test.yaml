@@ -1,23 +1,20 @@
 name: Test
 run-name: Test
-on:
-    pull_request:
-      branches:
-        - 'sensor_client/**'
-        - 'data_aggregation/**'
-        - 'actuator/**'
+on: [pull_request]
 jobs:
     test:
       runs-on: ubuntu-latest
       name: Test.
-      strategy:
-          matrix:
-            python-version: ["3.12"]
       steps:
         - uses: actions/checkout@v4
-        - name: Set up Python ${{ matrix.python-version }}
-          uses: actions/setup-python@v4
+        - name: Set up Python 3.12
+          uses: actions/setup-python@v5
           with:
-              python-version: ${{ matrix.python-version }}
+              python-version: '3.12'
+              cache: 'pip'
+        - name: Install poetry
+          run: pip install poetry==1.8.2
+        - name: Install dependencies
+          run: poetry install
         - name: Run code typing&linting
           run: make test
