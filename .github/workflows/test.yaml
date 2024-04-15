@@ -1,11 +1,6 @@
 name: Test
 run-name: Test
-on:
-    pull_request:
-      branches:
-        - 'sensor_client/**'
-        - 'data_aggregation/**'
-        - 'actuator/**'
+on: [pull_request]
 jobs:
     test:
       runs-on: ubuntu-latest
