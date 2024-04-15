@@ -4,7 +4,7 @@ build:
 run_sensor_client:
 	poetry run python components/sensor_client/src/sensor_client.py
 run_data_aggregation:
-	poetry run uvicorn components.data_aggregation.src.app:app --reload
+	poetry run uvicorn components.data_aggregation.src.app:app
 
 black:
 	poetry run black components
