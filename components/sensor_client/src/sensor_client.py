@@ -1,13 +1,13 @@
 import asyncio
 
 import aiohttp
-from api import post
+import data_aggregation
 from loop import run
 
 
 async def post_sensor_activation_report(data: dict) -> None:
     async with aiohttp.ClientSession() as session:
-        response = await post(session, "/collect", data)
+        response = await data_aggregation.post(session, "/collect", data)
         print(response)
 
 
