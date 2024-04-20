@@ -16,5 +16,5 @@ async def read_root() -> HttpResponse:
 
 @app.post("/collect")
 async def collect(sensor_input: SensorInput) -> HttpResponse:
-    _ = SensorActivations({"activated_at": sensor_input.activated_at}).save()
+    SensorActivations({"activated_at": sensor_input.activated_at}).save()
     return HttpResponse()

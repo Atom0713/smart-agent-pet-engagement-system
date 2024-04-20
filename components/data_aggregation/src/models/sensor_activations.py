@@ -1,5 +1,3 @@
-from boto3.resources.base import ServiceResource
-
 from ..database import ddb_client
 
 
