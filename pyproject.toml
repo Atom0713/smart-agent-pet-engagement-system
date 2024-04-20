@@ -17,6 +17,7 @@ flake8 = "^7.0.0"
 mypy = "^1.9.0"
 flake8-black = "^0.3.6"
 isort = "^5.13.2"
+flake8-pyproject = "^1.2.3"
 
 
 [tool.poetry.group.data_aggregation.dependencies]
@@ -35,3 +36,10 @@ ignore_missing_imports=true
 [[tool.mypy.overrides]]
 module = "loop"
 ignore_missing_imports = true
+
+[tool.black]
+line-length = 120
+target-version = ['py312']
+
+[tool.flake8]
+max-line-length=120

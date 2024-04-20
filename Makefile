@@ -15,10 +15,10 @@ isort:
 mypy: mypy_data_aggregation mypy_sensor_client
 
 mypy_sensor_client:
-	poetry run mypy components/sensor_client
+	poetry run mypy components/sensor_client --explicit-package-bases
 
 mypy_data_aggregation:
-	poetry run mypy components/data_aggregation
+	poetry run mypy components/data_aggregation --explicit-package-bases
 
 flake8:
 	poetry run flake8 components/sensor_client components/data_aggregation components/actuator

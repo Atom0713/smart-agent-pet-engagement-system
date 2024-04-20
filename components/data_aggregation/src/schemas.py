@@ -16,3 +16,5 @@ class HttpResponse(BaseModel):
 
 class SensorInput(BaseModel):
     activated_at: str
+    lon: int
+    lat: int
