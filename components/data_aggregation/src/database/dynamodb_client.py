@@ -1,6 +1,6 @@
 import boto3
 
-ddb_client = boto3.client(
+ddb_client = boto3.resource(
     "dynamodb",
     region_name="us-west-2",
     aws_access_key_id="fghddfghd",
