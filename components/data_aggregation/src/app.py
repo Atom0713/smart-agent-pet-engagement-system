@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from .schemas import HttpResponse, SensorInput
 
 from .database.table import initialize_db
+from .schemas import HttpResponse, SensorInput
 
 app = FastAPI()
 
@@ -14,5 +14,5 @@ async def read_root() -> HttpResponse:
 
 
 @app.post("/collect")
-async def collect(sensor_input: SensorInput ) -> HttpResponse:
+async def collect(sensor_input: SensorInput) -> HttpResponse:
     return HttpResponse()
