@@ -1,5 +1,4 @@
 from aiohttp import ClientSession
-import json
 
 BASE_URL: str = (
     "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/{}/lat/{}/data.json"
