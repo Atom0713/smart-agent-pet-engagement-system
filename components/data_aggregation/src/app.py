@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 
+from components.data_aggregation.src import smhi
+
 from .database.table import initialize_db
 from .models import SensorActivations
 from .schemas import HttpResponse, SensorInput
-from components.data_aggregation.src import smhi
 
 app = FastAPI()
 
