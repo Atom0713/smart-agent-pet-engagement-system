@@ -6,7 +6,7 @@ class SensorActivations:
     table = ddb_client.Table(TableName)
     PKAttributeName: str = "pk"
 
-    async def get_item(self) -> any:
+    async def get_item(self) -> dict:
         response = self.table.get_item(
             TableName=self.TableName,
         )
