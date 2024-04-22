@@ -20,17 +20,15 @@ run_house_toys_simulator:
 	poetry run uvicorn --port 8006 components.house_toys_simulator.src.app:app
 
 black:
-	poetry run black components
+	poetry run black components common
 
 isort:
-	poetry run isort components
+	poetry run isort components common
 
 mypy: 
-	poetry run mypy components  --explicit-package-bases
-
-mypy_actuator:
-	poetry run mypy components/mobile_app_simulator --explicit-package-bases
+	poetry run mypy components common  --explicit-package-bases
 
 flake8:
 	poetry run flake8 components
+
 test: mypy flake8
