@@ -16,6 +16,8 @@ run_actuator:
 run_mobile_app_simulator:
 	poetry run uvicorn --port 8005 components.mobile_app_simulator.src.app:app
 
+run_house_toys_simulator:
+	poetry run uvicorn --port 8006 components.house_toys_simulator.src.app:app
 
 black:
 	poetry run black components
