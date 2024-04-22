@@ -38,8 +38,26 @@ Run data aggregation tool:
 
 ```make run_data_aggregation```
 
+#### Data processing service
+Run data processing tool:
 
-#### Actuator
-Run actuator:
+```make run_data_processing```
+
+#### Actuator service
+Run actuator tool:
 
 ```make run_actuator```
+
+#### Mobile app simulator
+Run mobile app simulator:
+
+```make run_mobile_app_simulator```
+
+#### House toys simulator
+Run house toys simulator:
+
+```make run_house_toys_simulator```
+
+Activate toys:
+
+```curl -X POST -H "Content-Type: application/json" -d '{"toys": [{"toy_name": "laser"}]}' http://127.0.0.1:8006/activate```
