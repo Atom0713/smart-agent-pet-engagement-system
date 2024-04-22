@@ -16,6 +16,8 @@ run_actuator:
 run_mobile_app_simulator:
 	poetry run uvicorn --port 8005 components.mobile_app_simulator.src.app:app
 
+run_house_toys_simulator:
+	poetry run uvicorn --port 8006 components.house_toys_simulator.src.app:app
 
 black:
 	poetry run black components
@@ -23,19 +25,8 @@ black:
 isort:
 	poetry run isort components
 
-mypy: mypy_data_aggregation mypy_sensor_client mypy_data_processing mypy_actuator
-
-mypy_sensor_client:
-	poetry run mypy components/sensor_client --explicit-package-bases
-
-mypy_data_aggregation:
-	poetry run mypy components/data_aggregation --explicit-package-bases
-
-mypy_data_processing:
-	poetry run mypy components/data_processing --explicit-package-bases
-
-mypy_actuator:
-	poetry run mypy components/actuator --explicit-package-bases
+mypy: 
+	poetry run mypy components  --explicit-package-bases
 
 mypy_actuator:
 	poetry run mypy components/mobile_app_simulator --explicit-package-bases
