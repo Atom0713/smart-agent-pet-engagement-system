@@ -60,4 +60,4 @@ Run house toys simulator:
 
 Activate toys:
 
-```curl -X POST -H "Content-Type: application/json" -d '{"toys": [{"toy_name": "laser"}]}' http://127.0.0.1:8006/activate```
+```curl -X POST -H "Content-Type: application/json" -d '{"toys": [{"name": "laser"}]}' http://127.0.0.1:8006/activate```

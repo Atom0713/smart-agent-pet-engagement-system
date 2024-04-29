@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from common.schemas import HouseToys, HttpResponse
+from common import HouseToys, HttpResponse, logger
 
 app = FastAPI()
 
@@ -12,6 +12,7 @@ async def read_root():
 
 @app.get("/toy_activation")
 async def show_activated_toys(toys: HouseToys) -> HttpResponse:
+    logger.info(f"Activated: {toys}")
     return HttpResponse()
 
 
