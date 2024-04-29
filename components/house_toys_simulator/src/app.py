@@ -4,6 +4,7 @@ from common import HouseToys, HttpResponse, logger
 
 app = FastAPI()
 
+
 @app.get("/")
 async def read_root() -> HttpResponse:
     return HttpResponse()
@@ -11,5 +12,5 @@ async def read_root() -> HttpResponse:
 
 @app.post("/activate")
 async def activate_toy(house_toys: HouseToys) -> HttpResponse:
-    logger.info(f"Activate: {", ".join([toy.get("name") for toy in house_toys.toys])}")
+    logger.info(f"Activate: {house_toys}")
     return HttpResponse()

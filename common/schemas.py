@@ -26,3 +26,6 @@ class HouseToy(BaseModel):
 
 class HouseToys(BaseModel):
     toys: list
+
+    def __str__(self) -> str:
+        return ", ".join([toy.get("name") for toy in self.toys])
