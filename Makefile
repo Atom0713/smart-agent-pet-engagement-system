@@ -11,7 +11,7 @@ run_data_processing:
 	poetry run python components/data_processing/data_processing.py
 
 run_actuator:
-	poetry run python components/actuator/src/actuator.py
+	poetry run python components/actuator/actuator.py
 
 run_mobile_app_simulator:
 	poetry run uvicorn --port 8005 components.mobile_app_simulator.src.app:app
