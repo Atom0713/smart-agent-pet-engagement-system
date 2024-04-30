@@ -5,10 +5,10 @@ run_sensor_client:
 	poetry run python components/sensor_client/src/sensor_client.py
 
 run_data_aggregation:
-	poetry run uvicorn components.data_aggregation.src.app:app
+	poetry run uvicorn --port 8004 components.data_aggregation.src.app:app
 
 run_data_processing:
-	poetry run python components/data_processing/src/data_processing.py
+	poetry run python components/data_processing/data_processing.py
 
 run_actuator:
 	poetry run python components/actuator/src/actuator.py
