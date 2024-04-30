@@ -1,11 +1,17 @@
 import asyncio
+import datetime
 import logging
+from enum import Enum
 
 from src.database import initialize_db
 from src.models import ActivationSchedule, SensorActivations
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+
+
+class Toys(Enum):
+    LASER = "laser"
 
 
 async def convert_data_into_actions(data) -> dict:
@@ -19,15 +25,15 @@ async def query_aggregated_data() -> dict:
     return sensor_activations
 
 
-async def persist_new_actions(actions) -> None:
-    ActivationSchedule(actions).save()
+async def persist_new_actions() -> None:
+    ActivationSchedule(activate_at=datetime.datetime.now(), toy_name=Toys.LASER.value).save()
 
 
 async def main() -> None:
     while True:
         data = await query_aggregated_data()
-        actions = await convert_data_into_actions(data)
-        # await persist_new_actions(actions)
+        _ = await convert_data_into_actions(data)
+        await persist_new_actions()
         await asyncio.sleep(20)
 
 

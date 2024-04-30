@@ -1,27 +1,26 @@
 import datetime
+import logging
 
 from ..database import ddb_client
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
 
 class ActivationSchedule:
     TableName: str = "activation_schedule"
     table = ddb_client.Table(TableName)
-    PKAttributeName: str = "pk"
-    SKAttributeName: str = "sk"
+    PKAttributeName: str = "toy_name"
+    SKAttributeName: str = "activate_at"
     data: dict
 
-    def __init__(self, datetime: datetime, toy_name: str) -> None:
+    def __init__(self, activate_at: datetime, toy_name: str) -> None:
 
         self.data = {
-            self.PKAttributeName: "TEMP",
-            self.SKAttributeName: datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S"),
-            "activate_at": datetime,
-            "toy_name": toy_name,
+            self.PKAttributeName: toy_name,
+            self.SKAttributeName: activate_at.strftime("%m/%d/%Y, %H:%M:%S"),
         }
 
     def save(self) -> None:
-        response = self.table.put_item(
-            Item=self.data,
-            TableName=self.TableName,
-        )
-        print(response)
+        response = self.table.put_item(Item=self.data)
+        logger.info(response)
