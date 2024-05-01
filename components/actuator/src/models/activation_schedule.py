@@ -1,5 +1,5 @@
-import datetime
 import logging
+
 from boto3.dynamodb.conditions import Key
 
 from ..database import ddb_client
