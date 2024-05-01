@@ -1,3 +1,3 @@
-from .temp_model import TempModel
+from .activation_schedule import ActivationSchedule
 
-__all__: list[str] = ["TempModel"]
+__all__: list[str] = ["ActivationSchedule"]

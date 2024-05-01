@@ -1,9 +1,9 @@
-from aiohttp import ClientSession
+import requests
 
-BASE_URL: str = "http://127.0.0.1:8000"
+BASE_URL: str = "http://127.0.0.1:8004"
 
 
-async def post(session: ClientSession, url: str, data: dict) -> None:
+async def post(url: str, data: dict) -> None:
     url = f"{BASE_URL}{url}"
-    async with session.post(url, data=data) as response:
-        return await response.json()
+    response = requests.post(url, json=data)
+    print(response)
