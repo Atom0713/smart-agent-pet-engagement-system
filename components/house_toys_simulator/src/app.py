@@ -12,5 +12,5 @@ async def read_root() -> HttpResponse:
 
 @app.post("/activate")
 async def activate_toy(house_toys: HouseToys) -> HttpResponse:
-    logger.info(f"Activate: {house_toys}")
+    logger.info(f"Activating: {house_toys}")
     return HttpResponse()
