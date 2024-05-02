@@ -4,7 +4,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from common.schemas import HttpResponse, SensorInput
+from common import HttpResponse, SensorInput, logger
 from components.data_aggregation.src import smhi
 
 from .database.table import initialize_db
@@ -30,6 +30,9 @@ async def read_root() -> HttpResponse:
 
 @app.post("/collect")
 async def collect(sensor_input: SensorInput) -> HttpResponse:
+    logger.info("Sensor activation registered.")
+    logger.info(f"Collecting weather data for Lattitude: {sensor_input.lat}, Longitude: {sensor_input.lon}")
     weather_report: str = await smhi.get(sensor_input.lon, sensor_input.lat)
-    SensorActivations({"activated_at": sensor_input.activated_at, "weather_report": weather_report}).save()
+    logger.info("Saving activation metadata to key value store.")
+    SensorActivations({**sensor_input.to_dict(), "weather_report": weather_report}).save()
     return HttpResponse()

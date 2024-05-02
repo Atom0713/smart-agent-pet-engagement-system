@@ -8,12 +8,12 @@ def initialize_db():
         table = ddb_client.create_table(
             AttributeDefinitions=[
                 {"AttributeName": "pk", "AttributeType": "S"},
-                {"AttributeName": "sk", "AttributeType": "S"},
+                {"AttributeName": "activated_at", "AttributeType": "S"},
             ],
             TableName="sensor_activations",
             KeySchema=[
                 {"AttributeName": "pk", "KeyType": "HASH"},
-                {"AttributeName": "sk", "KeyType": "RANGE"},
+                {"AttributeName": "activated_at", "KeyType": "RANGE"},
             ],
             BillingMode="PAY_PER_REQUEST",
         )

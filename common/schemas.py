@@ -19,6 +19,9 @@ class SensorInput(BaseModel):
     lon: int
     lat: int
 
+    def to_dict(self) -> dict:
+        return {"activated_at": self.activated_at, "lat": self.lat, "lon": self.lon}
+
 
 class HouseToy(BaseModel):
     toy_name: str
