@@ -18,11 +18,11 @@ async def convert_data_into_actions(data) -> dict:
     return {}
 
 
-async def query_aggregated_data() -> dict:
+async def query_aggregated_data() -> list[dict]:
     logger.info("Query sensor activations for last 1 hour.")
     now: datetime = datetime.now()
 
-    sensor_activations = []
+    sensor_activations: list[dict] = []
     low_value: str = (now - timedelta(hours=1)).strftime("%m/%d/%Y, %H:%M:%S")
     while True:
         response = await SensorActivations().get_item(low_value, now.strftime("%m/%d/%Y, %H:%M:%S"))

@@ -18,4 +18,4 @@ class ActivationSchedule:
         }
 
     def save(self) -> None:
-        response = self.table.put_item(Item=self.data)
+        _ = self.table.put_item(Item=self.data)
