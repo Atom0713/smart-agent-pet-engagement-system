@@ -2,6 +2,7 @@ from datetime import datetime
 
 from ..database import ddb_client
 
+
 class ActivationSchedule:
     TableName: str = "activation_schedule"
     table = ddb_client.Table(TableName)
