@@ -14,8 +14,17 @@ class Toys(Enum):
     LASER = "laser"
 
 
-async def convert_data_into_actions(data) -> dict:
-    return {}
+class Activation:
+    activate_at: datetime
+    toy_name: str
+
+    def __init__(self, activate_at: datetime, toy_name: str) -> None:
+        self.activate_at = activate_at
+        self.toy_name = toy_name
+
+
+async def convert_data_into_actions(data) -> list[Activation]:
+    return [Activation(datetime.now(), Toys.LASER.value)]
 
 
 async def query_aggregated_data() -> list[dict]:
@@ -35,15 +44,16 @@ async def query_aggregated_data() -> list[dict]:
     return sensor_activations
 
 
-async def persist_new_actions() -> None:
-    ActivationSchedule(activate_at=datetime.now(), toy_name=Toys.LASER.value).save()
+async def persist_new_activations(actions: list[Activation]) -> None:
+    for activation in actions:
+        ActivationSchedule(activate_at=activation.activate_at, toy_name=activation.toy_name).save()
 
 
 async def main() -> None:
     while True:
         data = await query_aggregated_data()
-        _ = await convert_data_into_actions(data)
-        await persist_new_actions()
+        actions = await convert_data_into_actions(data)
+        await persist_new_activations(actions)
         await asyncio.sleep(20)
 
 

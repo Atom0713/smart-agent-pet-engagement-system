@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime, timedelta
 
 from boto3.dynamodb.conditions import Key
 
@@ -16,8 +17,10 @@ class ActivationSchedule:
     data: dict
 
     async def get_item(self) -> dict:
-        # how to query?
+        now: datetime = datetime.now()
+        low_value: str = (now - timedelta(seconds=40)).strftime("%m/%d/%Y, %H:%M:%S")
         response = self.table.query(
-            KeyConditionExpression=Key("toy_name").eq("laser"),
+            KeyConditionExpression=Key("toy_name").eq("laser")
+            & Key(self.SKAttributeName).between(low_value, now.strftime("%m/%d/%Y, %H:%M:%S")),
         )
         return response.get("Items")
