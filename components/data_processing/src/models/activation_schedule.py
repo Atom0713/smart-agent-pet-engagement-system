@@ -1,10 +1,6 @@
 from datetime import datetime
-import logging
 
 from ..database import ddb_client
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
 
 class ActivationSchedule:
@@ -22,5 +18,4 @@ class ActivationSchedule:
         }
 
     def save(self) -> None:
-        response = self.table.put_item(Item=self.data)
-        logger.info(response)
+        _ = self.table.put_item(Item=self.data)
