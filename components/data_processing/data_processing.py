@@ -9,6 +9,7 @@ from src.models import ActivationSchedule, SensorActivations
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
+
 class Toys(Enum):
     LASER = "laser"
 
@@ -22,8 +23,8 @@ class Activation:
         self.toy_name = toy_name
 
 
-async def convert_data_into_actions(data) -> dict:
-    return Activation(datetime.now(), Toys.LASER)
+async def convert_data_into_actions(data) -> list[Activation]:
+    return [Activation(datetime.now(), Toys.LASER.value)]
 
 
 async def query_aggregated_data() -> list[dict]:
