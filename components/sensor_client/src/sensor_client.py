@@ -1,13 +1,14 @@
 import asyncio
-from enum import Enum
 import logging
 from datetime import datetime
+from enum import Enum
 
 import data_aggregation
 from loop import run
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+
 
 class Location(Enum):
     LIVING_ROOM = 1
