@@ -13,10 +13,12 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 class Activation:
     activate_at: datetime
     toy_name: str
+    location: str
 
-    def __init__(self, activate_at: datetime, toy_name: str) -> None:
+    def __init__(self, activate_at: datetime, toy_name: str, location: str) -> None:
         self.activate_at = activate_at
         self.toy_name = toy_name
+        self.location = location
 
     @classmethod
     def from_list(cls, activations: list[dict]):
@@ -24,6 +26,7 @@ class Activation:
             Activation(
                 datetime.strptime(activation.get("activate_at", ""), "%m/%d/%Y, %H:%M:%S"),
                 activation.get("toy_name", ""),
+                activation.get("location", ""),
             )
             for activation in activations
         ]
@@ -35,7 +38,9 @@ async def main() -> None:
         logger.info(f"Registered {len(activations)} scheduled activations.")
         logger.info("Commencing scheduled activations.")
         for activation in activations:
-            logger.info(f"Activate_at: {activation.activate_at}, Toy: {activation.toy_name}")
+            logger.info(
+                f"Activate_at: {activation.activate_at}, Toy: {activation.toy_name}, Location: {activation.location}"
+            )
             if not datetime.now() > activation.activate_at:
                 continue
             await activate_toy({"toys": [{"name": activation.toy_name}]})
