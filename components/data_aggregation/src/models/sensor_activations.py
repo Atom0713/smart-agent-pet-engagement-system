@@ -9,9 +9,10 @@ class SensorActivations:
     data: dict
 
     def __init__(self, data: dict) -> None:
+        pk: str = "MOTION_SENSOR_{}".format(data.get("location", ""))
         data.update(
             {
-                self.PKAttributeName: "MOTION_SENSOR",
+                self.PKAttributeName: pk,
             }
         )
         self.data = data

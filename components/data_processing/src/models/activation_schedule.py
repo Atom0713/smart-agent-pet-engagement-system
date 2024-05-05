@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from ..database import ddb_client
 
 
@@ -10,12 +8,8 @@ class ActivationSchedule:
     SKAttributeName: str = "activate_at"
     data: dict
 
-    def __init__(self, activate_at: datetime, toy_name: str) -> None:
+    def __init__(self, data: dict) -> None:
+        self.data = data
 
-        self.data = {
-            self.PKAttributeName: toy_name,
-            self.SKAttributeName: activate_at.strftime("%m/%d/%Y, %H:%M:%S"),
-        }
-
-    def save(self) -> None:
+    async def save(self) -> None:
         _ = self.table.put_item(Item=self.data)
