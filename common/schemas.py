@@ -14,13 +14,18 @@ class HttpResponse(BaseModel):
     data: dict = {}
 
 
+class Location(Enum):
+    LIVING_ROOM = 1
+
+
 class SensorInput(BaseModel):
     activated_at: str
     lon: int
     lat: int
+    location: int
 
     def to_dict(self) -> dict:
-        return {"activated_at": self.activated_at, "lat": self.lat, "lon": self.lon}
+        return {"activated_at": self.activated_at, "lat": self.lat, "lon": self.lon, "location": Location(self.location).name}
 
 
 class HouseToy(BaseModel):

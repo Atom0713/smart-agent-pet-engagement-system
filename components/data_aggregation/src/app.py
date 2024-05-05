@@ -1,3 +1,4 @@
+from enum import Enum
 import logging
 
 from fastapi import FastAPI, Request, status
@@ -13,6 +14,9 @@ from .models import SensorActivations
 app = FastAPI()
 
 db = initialize_db()
+
+class Location(Enum):
+    LIVING_ROOM = "1"
 
 
 @app.exception_handler(RequestValidationError)

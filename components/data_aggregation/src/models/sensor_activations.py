@@ -11,7 +11,7 @@ class SensorActivations:
     def __init__(self, data: dict) -> None:
         data.update(
             {
-                self.PKAttributeName: "MOTION_SENSOR",
+                self.PKAttributeName: f"MOTION_SENSOR_{data.get("location", "")}",
             }
         )
         self.data = data
