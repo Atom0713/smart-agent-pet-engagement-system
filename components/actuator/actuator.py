@@ -43,8 +43,9 @@ async def main() -> None:
             )
             if not datetime.now() > activation.activate_at:
                 continue
-            await activate_toy({"toys": [{"name": activation.toy_name}]})
-            await notify_user({"toys": [{"name": activation.toy_name}]})
+            data: dict = {"toys": [{"name": activation.toy_name, "location": activation.location}]}
+            await activate_toy(data)
+            await notify_user(data)
         logger.info("Done!")
         await asyncio.sleep(20)
 

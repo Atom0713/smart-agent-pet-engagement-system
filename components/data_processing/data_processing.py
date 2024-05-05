@@ -69,7 +69,7 @@ async def main() -> None:
         data = await query_aggregated_data()
         actions = await convert_data_into_actions(data)
         await persist_new_activations(actions)
-        await asyncio.sleep(50)
+        await asyncio.sleep(60)
 
 
 def run() -> None:

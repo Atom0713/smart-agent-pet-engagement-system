@@ -33,12 +33,17 @@ class SensorInput(BaseModel):
         }
 
 
-class HouseToy(BaseModel):
+class HouseToy:
     toy_name: str
+    location: str
+
+    def __init__(self, data: dict) -> None:
+        self.toy_name = data.get("name", "")
+        self.location = data.get("location", "")
+
+    def __str__(self) -> str:
+        return f"Activating: {self.toy_name}, at location: {self.location}"
 
 
 class HouseToys(BaseModel):
     toys: list
-
-    def __str__(self) -> str:
-        return ", ".join([toy.get("name") for toy in self.toys])

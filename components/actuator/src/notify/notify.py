@@ -12,5 +12,5 @@ async def post(data: dict) -> None:
     try:
         _ = requests.post(url, json=data)
     except ConnectionError:
-        logger.info("Activation failed, device is offline! Wait.")
+        logger.info("Notification failed, mobile app unreachable.")
         await asyncio.sleep(60)

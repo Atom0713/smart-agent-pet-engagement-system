@@ -18,7 +18,7 @@ class ActivationSchedule:
 
     async def get_item(self) -> dict:
         now: datetime = datetime.now()
-        low_value: str = (now - timedelta(seconds=40)).strftime("%m/%d/%Y, %H:%M:%S")
+        low_value: str = (now - timedelta(minutes=1)).strftime("%m/%d/%Y, %H:%M:%S")
         response = self.table.query(
             KeyConditionExpression=Key("toy_name").eq("laser")
             & Key(self.SKAttributeName).between(low_value, now.strftime("%m/%d/%Y, %H:%M:%S")),
